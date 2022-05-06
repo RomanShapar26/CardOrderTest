@@ -18,24 +18,6 @@ public class CardOrderTest {
         open("http://localhost:9999/");
     }
 
-    WebDriver driver;
-
-    @BeforeAll
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeEach
-    void setupTest() {
-        driver = new ChromeDriver();
-    }
-
-    @AfterEach
-    void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 
     @Test
     public void shouldReturnValid() {
