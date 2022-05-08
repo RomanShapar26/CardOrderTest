@@ -1,13 +1,8 @@
 package ru.netology;
 
 import com.codeborne.selenide.Condition;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -26,7 +21,7 @@ public class CardOrderTestFailed {
         $("[data-test-id=phone] input").setValue("");
         $("[data-test-id=agreement]").click();
         $("[type=button]").click();
-        $(".input_type_text .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
     @Test
@@ -35,7 +30,7 @@ public class CardOrderTestFailed {
         $("[data-test-id=phone] input").setValue("+1236547895");
         $("[data-test-id=agreement]").click();
         $("[type=button]").click();
-        $(".input_type_text .input__sub").shouldHave(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
+        $("[data-test-id='name'].input_invalid .input__sub").shouldHave(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
 
@@ -46,17 +41,17 @@ public class CardOrderTestFailed {
         $("[data-test-id=phone] input").setValue("");
         $("[data-test-id=agreement]").click();
         $("[type=button]").click();
-        $(".input_type_text .input__sub").shouldHave(Condition.exactText("Поля обязательные для заполнения"));
+        $("[data-test-id=''].input_invalid .input__sub").shouldHave(Condition.exactText("Поля обязательные для заполнения"));
     }
 
 
     @Test
     public void shouldShowErrorInvalidNumberTelephoneField() {
-        $("[data-test-id=name] input").setValue("Андрей Андреев");
-        $("[data-test-id='phone'].inputinvalid .input__sub").setValue("+77647578874764764");
+        $("[data-test-id=name] input").setValue("Игорь Игорев");
+        $("[data-test-id=phone] input").setValue("+1549646236547895");
         $("[data-test-id=agreement]").click();
         $("[type=button]").click();
-        $(".input_type_tel .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
