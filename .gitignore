@@ -1,3 +1,5 @@
+Thumbs.db*
+.DS_Store
 HELP.md
 .gradle
 build/
@@ -23,6 +25,7 @@ out/
 /nbbuild/
 /dist/
 /nbdist/
+/.nb-gradle/
 
 ### VS Code ###
 .vscode/
@@ -37,5 +40,6 @@ out/
 *.rar
 
 ### Exclusions ###
+!gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
