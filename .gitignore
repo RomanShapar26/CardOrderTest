@@ -17,7 +17,7 @@ build/
 .idea
 *.iws
 *.iml
-*.ipr
+*.i
 out/
 
 ### NetBeans ###
